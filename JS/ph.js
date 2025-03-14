@@ -29,18 +29,31 @@ function showVideo(videos) {
     videos.forEach(video => {
         const newCard = document.createElement("div");
         newCard.innerHTML = `
-        <div class="card bg-base-100 shadow-sm">
-  <figure>
-    <img
-      src="${video.thumbnail}"
-      alt="Shoes" />
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title">${video.title}</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    
-  </div>
-</div>
+        <div class="card bg-base-100 ">
+            <figure>
+                <img class="rounded-lg m-0 w-full h-[250px] object-cover" src="${video.thumbnail}" alt="Shoes" />
+            </figure>
+            <div class="flex  items-start">
+        
+                <div>
+                    <div class="avatar mt-6">
+                        <div class="w-10  rounded-full ">
+                          <img class="" src="${video.authors[0].profile_picture}" />
+                        </div>
+                      </div>
+                </div>
+                <div class="card-body">
+                    
+                    <p class="font-semibold text-sm">A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                    
+                    <p class="text-gray-600 font-semibold flex gap-4 items-center justify-start">${video.authors[0].profile_name}<img src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" class="w-5 h-5" alt=""></p>
+                    <p class="text-gray-600 font-semibold">${video.others.views} views
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
         
         `
         videoContainer.appendChild(newCard);
