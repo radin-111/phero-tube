@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PH-TUBE</title>
+    <style>
+        .active {
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -23,13 +29,18 @@
     </header>
     <nav>
         <div id="btn-container" class="flex justify-center gap-5">
-            <div><button class="btn hover:bg-[#FF1F3D]  hover:text-white">All</button></div>
+            <div><button class="btn hover:bg-[#FF1F3D]  hover:text-white" onclick="loadVideo()">All</button></div>
 
 
         </div>
     </nav>
     <section id="video-container" class="grid grid-cols-4 gap-4 my-5">
-        
+        <div class="py-20 my-22 col-span-full flex flex-col justify-center items-center text-center">
+            <img class="w-[120px]" src="./assets/Icon.png" alt="" />
+            <h2 class="text-2xl font-bold">
+                Oops!! Sorry, There is no content here
+            </h2>
+        </div>
     </section>
 
     <script src="JS/ph.js"></script>

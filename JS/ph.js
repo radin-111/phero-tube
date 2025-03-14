@@ -12,7 +12,7 @@ function showNav(navd) {
     const newArray = navd.categories;
     for (element of newArray) {
         const newBtn = document.createElement("button");
-        newBtn.innerHTML = ` <div><button class="btn hover:bg-[#FF1F3D] hover:text-white">${element.category}</button></div>
+        newBtn.innerHTML = ` <div><button id="btn-${element.category_id}" onclick="loadCatV(${element.category_id})" class="btn hover:bg-[#FF1F3D] hover:text-white">${element.category}</button></div>
         `
         navDiv.appendChild(newBtn);
 
@@ -24,14 +24,33 @@ function loadVideo() {
         .then(ii => ii.json())
         .then(data => showVideo(data.videos))
 }
+const loadCatV = (id)=> {
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
+    // console.log(url)
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const cbtn = document.getElementById(`btn-${id}`)
+            cbtn.classList.add("active");
+            showVideo(data.category);
+        })
+
+
+}
+
 function showVideo(videos) {
     const videoContainer = document.getElementById("video-container");
+    videoContainer.innerHTML = "";
     videos.forEach(video => {
         const newCard = document.createElement("div");
+
         newCard.innerHTML = `
         <div class="card bg-base-100 ">
             <figure>
                 <img class="rounded-lg m-0 w-full h-[250px] object-cover" src="${video.thumbnail}" alt="Shoes" />
+                <div class="absolute text-xl text-white bg-black rounded p-1 font-semibold bottom-40 right-2">
+                    <p>3hrs 56 min ago</p>
+                </div>
             </figure>
             <div class="flex  items-start">
         
@@ -63,7 +82,7 @@ function showVideo(videos) {
     });
 }
 loadNav();
-loadVideo();
+// loadVideo();
 // {
 //     "category_id": "1001",
 //     "video_id": "aaah",
