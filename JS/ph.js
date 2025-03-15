@@ -3,7 +3,12 @@ function loadNav() {
         .then(res => res.json())
         .then(data => showNav(data))
 }
-document.getElementById("btn").addEventListener("click",function (){
+function dddd (){
+    const cbtn =document.getElementById("btn");
+    cbtn.classList.add("active");
+    showVideo(data.category);
+}
+document.getElementById("btn").addEventListener("click", function () {
     const activeBtn = document.getElementsByClassName("btn-all");
     for (let btn of activeBtn) {
         btn.classList.remove("active");
@@ -101,7 +106,8 @@ function showVideo(videos) {
             </div>
             
         </div>
-        <div><button class="btn btn-block">View Details</button></div>
+        <div><button class="btn btn-block"  onclick="my_modal_3.showModal()">View Details</button></div>
+        
         
         `
         videoContainer.appendChild(newCard);
@@ -110,7 +116,7 @@ function showVideo(videos) {
 
     });
 }
-
+// dddd();
 loadNav();
 loadVideo();
 

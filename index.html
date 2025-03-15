@@ -29,15 +29,27 @@
     </header>
     <nav>
         <div id="btn-container" class="flex justify-center gap-5">
-            <div><button id="btn" class="btn hover:bg-[#FF1F3D] btn-all  hover:text-white  active"  onclick="loadVideo()">All</button></div>
+            <div><button id="btn" class="btn hover:bg-[#FF1F3D] btn-all  hover:text-white  active"
+                    onclick="loadVideo()">All</button></div>
 
 
         </div>
     </nav>
     <section id="video-container" class="grid grid-cols-1 sm:grid-cols-4 gap-4 my-5 ">
+        <!-- You can open the modal using ID.showModal() method -->
         
+        <dialog id="my_modal_3" class="modal">
+            <div class="modal-box">
+                <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
+                <form method="dialog">
+                    <button id="btn" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg[#FF1F3D]">✕</button>
+                </form>
+                <h3 class="text-lg font-bold">Hello!</h3>
+                <p class="py-4">Press ESC key or click on ✕ button to close</p>
+            </div>
+        </dialog>
     </section>
-
+    
     <script src="JS/ph.js"></script>
 </body>
 
