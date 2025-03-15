@@ -3,6 +3,18 @@ function loadNav() {
         .then(res => res.json())
         .then(data => showNav(data))
 }
+document.getElementById("btn").addEventListener("click",function (){
+    const activeBtn = document.getElementsByClassName("btn-all");
+    for (let btn of activeBtn) {
+        btn.classList.remove("active");
+    }
+})
+function removeColor() {
+    const activeBtn = document.getElementsByClassName("btn-all");
+    for (let btn of activeBtn) {
+        btn.classList.remove("active");
+    }
+}
 // {
 //     "category_id": "1001",
 //     "category": "Music"
@@ -12,7 +24,7 @@ function showNav(navd) {
     const newArray = navd.categories;
     for (element of newArray) {
         const newBtn = document.createElement("button");
-        newBtn.innerHTML = ` <div><button id="btn-${element.category_id}" onclick="loadCatV(${element.category_id})" class="btn hover:bg-[#FF1F3D] hover:text-white">${element.category}</button></div>
+        newBtn.innerHTML = ` <div><button id="btn-${element.category_id}" onclick="loadCatV(${element.category_id})" class="btn hover:bg-[#FF1F3D] hover:text-white btn-all">${element.category}</button></div>
         `
         navDiv.appendChild(newBtn);
 
@@ -24,12 +36,13 @@ function loadVideo() {
         .then(ii => ii.json())
         .then(data => showVideo(data.videos))
 }
-const loadCatV = (id)=> {
+const loadCatV = (id) => {
     const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
     // console.log(url)
     fetch(url)
         .then(res => res.json())
         .then(data => {
+            removeColor();
             const cbtn = document.getElementById(`btn-${id}`)
             cbtn.classList.add("active");
             showVideo(data.category);
@@ -41,6 +54,19 @@ const loadCatV = (id)=> {
 function showVideo(videos) {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = "";
+
+    if (videos.length === 0) {
+        videoContainer.innerHTML = `
+        <div class="py-20 my-22 col-span-full flex flex-col justify-center items-center text-center">
+            <img class="w-[120px]" src="./assets/Icon.png" alt="" />
+            <h2 class="text-2xl font-bold">
+                Oops!! Sorry, There is no content here
+            </h2>
+        </div>`;
+        return;
+    }
+
+
     videos.forEach(video => {
         const newCard = document.createElement("div");
 
@@ -48,7 +74,7 @@ function showVideo(videos) {
         <div class="card bg-base-100 ">
             <figure>
                 <img class="rounded-lg m-0 w-full h-[250px] object-cover" src="${video.thumbnail}" alt="Shoes" />
-                <div class="absolute text-xl text-white bg-black rounded p-1 font-semibold bottom-40 right-2">
+                <div class="absolute text-xl text-white bg-black rounded p-1 font-semibold bottom-44 sm:bottom-40 right-2">
                     <p>3hrs 56 min ago</p>
                 </div>
             </figure>
@@ -71,8 +97,11 @@ function showVideo(videos) {
                     </p>
 
                 </div>
+                
             </div>
+            
         </div>
+        <div><button class="btn btn-block">View Details</button></div>
         
         `
         videoContainer.appendChild(newCard);
@@ -81,8 +110,10 @@ function showVideo(videos) {
 
     });
 }
+
 loadNav();
-// loadVideo();
+loadVideo();
+
 // {
 //     "category_id": "1001",
 //     "video_id": "aaah",
