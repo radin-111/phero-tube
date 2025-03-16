@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH-TUBE</title>
+    <style>
+        .active {
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="w-11/12 mx-auto mt-3">
+    <header class="my-5 ">
+        <nav class="flex justify-between items-center py-6  border-b-2 border-gray-200 ">
+
+            <div class="">
+                <img src="assets/Logo.png" alt="">
+            </div>
+            <div class="hidden sm:block"><button class="btn btn-active font-medium text-xl ">Sort by view</button></div>
+            <div><button class="btn bg-[#FF1F3D] font-medium text-xl text-white">Blog</button></div>
+        </nav>
+
+    </header>
+    <nav>
+        <div id="btn-container" class="flex justify-center gap-5">
+            <div><button id="btn" class="btn hover:bg-[#FF1F3D] btn-all  hover:text-white  active"
+                    onclick="loadVideo()">All</button></div>
+
+
+        </div>
+    </nav>
+    <section id="video-container" class="grid grid-cols-1 sm:grid-cols-4 gap-4 my-5 ">
+        <!-- You can open the modal using ID.showModal() method -->
+
+
+    </section>
+    <dialog id="my_modal_3" class="modal">
+        <div class="modal-box">
+
+            <form method="dialog">
+                <button id="btn"
+                    class="btn hover:bg-[#FF1F3D] hover:text-white  btn-sm btn-circle btn-ghost absolute right-2 top-2 ">✕</button>
+            </form>
+            <div class="card bg-base-100 m-4 image-full  shadow-sm">
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Card Title</h2>
+                    <p>A card component has a figure, a body part, and inside body there are title and actions parts
+                    </p>
+                    <div class="card-actions justify-end">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <script src="JS/ph.js"></script>
+
+</body>
+
+</html>
